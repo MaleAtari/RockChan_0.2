@@ -13,6 +13,8 @@ def create_app(config_class=config.DevConfig):
     db.init_app(app)
     migrate.init_app(app, db)
     from app import models
+    from app.chan.views import blueprint_Chan
+    app.register_blueprint(blueprint_Chan, url_prefix='/chan')
 
     return app
 
