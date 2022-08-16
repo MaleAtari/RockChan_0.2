@@ -1,13 +1,30 @@
 {% extends "base.html" %}
 
+
+
+{% block navbar %}
+
+
+    <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Default</a>
+  </div>
+</nav>
+
+{% endblock %}
+
+
 {% block content %}
     <h1> RockChan</h1>
 
     <a href="{{ url_for('chan.home') }}"> Chan </a>
+    <a href="{{ url_for('users.home') }}"> Users </a>
     <br/>
 
 
     <img src="data:image/png;base64, {{ kapcza.html }}">
+    <h1> {{ kapcza.captcha_text }}</h1>
+    <h1> {{ kapcza.resolve(kapcza.captcha_text) }}</h1>
 
 
 {% endblock %}

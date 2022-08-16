@@ -14,7 +14,9 @@ def create_app(config_class=config.DevConfig):
     migrate.init_app(app, db)
     from app import models
     from app.chan.views import blueprint_Chan
+    from app.users.views import blueprint_Users
     app.register_blueprint(blueprint_Chan, url_prefix='/chan')
+    app.register_blueprint(blueprint_Users, url_prefix='/users')
 
     return app
 
