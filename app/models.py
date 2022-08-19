@@ -20,6 +20,8 @@ class Users(db.Model):
     date_log = db.Column(db.DateTime, default=datetime.now)
     points = db.Column(db.Integer, default=0)
     posts = db.relationship('Posts', backref='user')
+    boards = db.relationship('Board', backref='user')
+
 
 
     def __init__(self, name, password, role=5):
@@ -46,6 +48,7 @@ class Board(db.Model):
     date_add = db.Column(db.DateTime, default=datetime.now)
     open = db.Column(db.Boolean, default=True)
     posts = db.relationship('Posts', backref='board')
+    user_id = db.Column(db.ForeignKey(Users.id))
 
 
 

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="container main-width my-3 bg-white bg-opacity-50">
+
+		
+		<div class="row my-2">
+			<div class="col-6 col-md-12">
+				<p class="fs-5 text-center"> Podana Strona nie istnieje </p>
+			</div>
+
+			<div class="col-6 col-md-12">
+				<p class="fs-5 text-center"> Zostaniesz automatycznie przekierowany ...</p>
+			</div>
+		</div>
+
+		<div class="row my-2">
+			<div class="container d-flex justify-content-center">
+            	<a href="{{ url_for('home') }}"> <img src="{{ url_for('static', filename='img/404e1.gif') }}" class="img-fluid" style="max-height: 80%;"> </a>
+        	</div>
+		</div>
+
+
+
+
+	</div>
+
+	<script>
+		window.setTimeout(function()
+		{
+			window.location.href = "{{ url_for('home') }}";
+		}, 5000);
+	</script>
+
+{% endblock %}

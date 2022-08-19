@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container main-width my-3 bg-white bg-opacity-50">
+
+    <div class="row my-2">
+      <div class="col-md-12 col-6">
+        <h2 class="text-center"> To niestety nie wejdziesz</h2>
+      </div>
+       <div class="col-md-12 col-6">
+        <h2 class="text-center"> na RockChana !!!</h2>
+      </div>
+    </div>
+    <div class="row my-5 text-align-center">
+
+      <p class="fs-5 text-center"> Jeśli jednak się zdecydujesz to kliknij tu </p>
+
+
+    </div>
+    <div class="row my-2">
+
+      <a href="{{ url_for('main') }}" class="btn btn-success">  <h2> Jednak Wchodzę </h2> </a>
+    </div>
+
+    
+  </div>
+
+{% endblock %}
