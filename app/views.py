@@ -52,3 +52,30 @@ def ohh_noo():
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.route('/anty_spam', methods=['POST', 'GET'])
+def anty_spam():
+    if session['user_info']['count'] > 0:
+        return redirect(url_for('home'))
+    if request.method == 'GET':
+        mycaptcha = MyCaptcha(char_count=4)
+        session['captcha'] = mycaptcha.captcha_text
+
+    if request.method == 'POST':
+        userCaptcha = request.form['userCaptcha']
+
+        if userCaptcha == session['captcha']:
+            session['user_info'] = user_is_checked()
+
+            # pobieramy id boardu i postu, ktory wczesniej napisalismy
+            dest = session.get('last_post')
+            if dest:
+                return redirect(url_for('chan.board', id=dest[0], _anchor=f'post{dest[1]}'))
+            else:
+                return redirect(url_for('home'))
+
+        else:
+
+            return redirect(url_for('anty_spam'))
+
+    return render_template('anty_spam.html', mycaptcha=mycaptcha)
+

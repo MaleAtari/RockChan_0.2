@@ -5,6 +5,8 @@
 
 	 <div class="container my-3 main-width">
 
+	 	<h1 id="post0" class="text-center"> {{ board.name }} </h1>
+
 	 		{% for post in board.posts %}
 	 			{{ showPost(post) }}
 
@@ -49,5 +51,9 @@
 		 	</form>
 		 </div>
 	{% endif %}
+
+	<div class="container main-width my-2 d-flex justify-content-center">
+		<a href="#rlogo" class="btn btn-success"> Powrót </a>
+	</div>
 
 {% endblock %}

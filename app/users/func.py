@@ -31,6 +31,9 @@ def is_checked(f):
     def decorated_func(*args, **kwargs):
         if (session.get('user_info')['is_checked'] == True) and (session.get('user_info')['count'] > 0):
             return f(*args, **kwargs)
+        elif (session.get('user_info')['is_checked'] == True) and (session.get('user_info')['count'] < 1):
+            return redirect(url_for('anty_spam'))
+
         else:
             return redirect(url_for('main'))
     return decorated_func

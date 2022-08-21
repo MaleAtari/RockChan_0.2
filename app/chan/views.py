@@ -27,6 +27,7 @@ def board(id):
         db.session.commit()
         points = int(session['user_info']['count']) - 1
         session['user_info']['count'] = points
+        session['last_post'] = (id, new_post.id)
         session.modified = True
 
         return redirect(url_for('chan.board', id=board.id, _anchor=f'post{new_post.id}'))

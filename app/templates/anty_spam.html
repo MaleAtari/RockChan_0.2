@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="container my-3 main-width">
+		<div class="row my-1 p-3">
+			<p class="fs-3 text-center"> Wykryliśmy dużą aktywność, aby nadal korzystać z RockChana poczekaj chwilę ! </p>
+		</div>
+
+		<div class="container d-flex justify-content-center">
+			<img src="{{ url_for('static', filename='img/nospam1.jpg') }}" class="img-fluid">
+
+		</div>
+	</div>
+
+	{% with mycaptcha=mycaptcha %}
+    	{% include 'include/_captcha_modal.html' %}
+	{% endwith %}
+
+{% endblock %}
