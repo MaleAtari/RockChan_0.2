@@ -64,3 +64,6 @@ class Posts(db.Model):
     date_edit = db.Column(db.DateTime)
     board_id = db.Column(db.ForeignKey(Board.id))
     user_id = db.Column(db.ForeignKey(Users.id))
+
+    def show_date_add(self):
+        return self.date_add.strftime("%D  %H:%M")

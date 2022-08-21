@@ -1,0 +1,54 @@
+{% macro showBoard(board) %}
+
+    <div class="row shadow mb-5 bg-body bg-rounded">
+
+        <div class="col-12 text-center bg-primary bg-opacity-50">
+            <a class="link-dark" href="{{ url_for('chan.board', id=board.id) }}"> <h2> {{ board.name }} </h2> </a>
+        </div>
+
+        <div class="col-md-4 bg-danger p-1">
+            {% if board.open == True %}
+                <a href="{{ url_for('chan.board', id=board.id) }}"> <img src="{{ url_for('static', filename='img/thumb2.png') }}" class="rounded mx-auto d-block" style="height: 100px;"> </a>
+            {% else %}
+                <a href="{{ url_for('chan.board', id=board.id) }}"> <img src="{{ url_for('static', filename='img/closed1.jpg') }}" class="rounded mx-auto d-block my-2" style="height: 100px;"> </a>
+            {% endif %}
+            
+        </div>
+
+        <div class="col-md-8 bg-light p-2">
+            <p style="white-space: pre-wrap;"> {{ board.info }} </p>
+            <p class="text-end fst-italic"> Tablicę utworzono: {{ board.show_date_add() }} </p>
+            <p class="text-end fst-italic"> utworzył: {{ board.user.name }} </p>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% macro showPost(post) %}
+
+    <div id="post{{post.id}}" class="container my-2 bg-light bg-opacity-50 border border-secondary">
+
+        <div class="row border-end border-2 border-secondary border-opacity-75">    
+
+            <div class="col-6">
+                    <p class="text-center fst-italic fs-5"> {{ post.auth }} </p>
+            </div>
+
+            <div class="col-6">
+                <p class="text-end"> {{ post.show_date_add() }}</p>
+            </div>
+
+
+        </div>
+
+        <div class="row border-bottom border-end border-2 border-secondary border-opacity-75 justify-content-center">
+            
+            <div class="col-10 col-md-8">
+                <p class="text-center" style="white-space: pre-wrap;"> {{ post.content }} </p>
+            </div>
+        </div>
+
+    </div>
+
+{% endmacro %}
+

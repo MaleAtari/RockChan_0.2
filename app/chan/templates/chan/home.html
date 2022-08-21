@@ -1,6 +1,13 @@
 {% extends "base.html" %}
+{% from "_macros.html" import showBoard %}
 
 {% block content %}
-    <h1> CHAN </h1>
+    <div class="container my-3 main-width bg-white bg-opacity-50">
+     
+
+        {% for board in boards %}
+            {{ showBoard(board) }}
+        {% endfor %}
+    </div>
 
 {% endblock %}

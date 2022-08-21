@@ -29,7 +29,7 @@ def user_is_checked():
 def is_checked(f):
     @wraps(f)
     def decorated_func(*args, **kwargs):
-        if (session.get('user_info')['is_checked'] == True) and (session.get('user_info')['count'] >= 0):
+        if (session.get('user_info')['is_checked'] == True) and (session.get('user_info')['count'] > 0):
             return f(*args, **kwargs)
         else:
             return redirect(url_for('main'))
